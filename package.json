@@ -1,0 +1,58 @@
+{
+  "name": "universal-region-folding",
+  "displayName": "Universal Region Folding",
+  "description": "A universal extension to help with region folding due to the fact everything else is inefficient.",
+  "version": "1.0.0",
+  "publisher": "Obtunex",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["*"],
+  "main": "./Extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "UniversalRegionFolding.CreateRegion",
+        "title": "Universal Region: Create Folding Region"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "UniversalRegionFolding.CreateRegion",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Universal Region Folding",
+      "properties": {
+        "UniversalRegionFolding.StartName": {
+          "type": "string",
+          "default": "#StartRegion",
+          "description": "Start region marker name"
+        },
+        "UniversalRegionFolding.EndName": {
+          "type": "string",
+          "default": "#EndRegion",
+          "description": "End region marker name"
+        },
+        "UniversalRegionFolding.RegionName": {
+          "type": "string",
+          "default": "// ${Name}",
+          "description": "Syntax template. Use ${Name} for region name placeholder"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "16.x",
+    "eslint": "^8.0.0"
+  }
+}
